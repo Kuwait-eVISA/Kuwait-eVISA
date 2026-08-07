@@ -38,8 +38,12 @@
 
             .section { min-height: 75vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
             .verification-card { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); width: 100%; max-width: 450px; text-align: center; }
-            .verification-card h4 { color: #0b2239; margin-bottom: 8px; font-size: 18px; }
-            .verification-card p { color: #6c757d; margin-bottom: 20px; font-size: 13px; }
+            
+            /* تنسيق النصوص المتجاورة (إنجليزية ثم عربية) */
+            .verification-card h4 { color: #0b2239; margin-bottom: 4px; font-size: 18px; }
+            .verification-card .sub-heading { color: #0b2239; font-size: 15px; font-weight: bold; margin-bottom: 12px; }
+            .verification-card p { color: #6c757d; margin-bottom: 4px; font-size: 13px; }
+            .verification-card .sub-p { color: #6c757d; font-size: 13px; font-weight: bold; margin-bottom: 20px; }
             
             .input-group { display: flex; gap: 10px; }
             .form-control { flex: 1; padding: 12px 15px; font-size: 14px; border: 1px solid #ced4da; border-radius: 6px; outline: none; text-align: right; }
@@ -87,10 +91,12 @@
 
 <section id="searchSection" class="section">
     <div class="verification-card">
-        <h4>التحقق من الوثائق الرقمية</h4>
-        <p>أدخل رقم التأشيرة أو رقم الجواز للفحص عبر التطبيق</p>
+        <h4>Verify Digital Documents</h4>
+        <div class="sub-heading">التحقق من الوثائق الرقمية</div>
+        <p>Enter visa number or passport number to verify</p>
+        <div class="sub-p">أدخل رقم التأشيرة أو رقم الجواز للفحص عبر التطبيق</div>
         <div class="input-group">
-            <input type="text" id="searchInput" class="form-control" placeholder="رقم التأشيرة أو الجواز...">
+            <input type="text" id="searchInput" class="form-control" placeholder="Visa No. or Passport No. / رقم التأشيرة أو الجواز...">
             <button type="button" id="searchBtn" class="btn-search">تحقق</button>
         </div>
     </div>
