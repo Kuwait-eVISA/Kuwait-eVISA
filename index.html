@@ -391,7 +391,7 @@
     document.getElementById('searchBtn').addEventListener('click', function() {
         let query = document.getElementById('searchInput').value.trim();
         if(!query) {
-            alert('الرجاء إدخال رقم التأشيرة أو رقم الجواز!');
+            alert('الرجاء إدخال رقم التأشيرة أو رقم الجواز / Please enter visa or passport number!');
             return;
         }
 
@@ -421,7 +421,7 @@
             document.getElementById('searchSection').style.display = 'none';
             document.getElementById('resultSection').style.display = 'block';
         } else {
-            alert('لم يتم العثور على أي وثيقة مطابقة. (جرب البحث برقم الجواز: A34831507 أو N08912345 أو P78234910)');
+            alert('Invalid information or invalid visa / المعلومات غير صحيحة أو أن التأشيرة غير صالحة');
         }
     });
 
