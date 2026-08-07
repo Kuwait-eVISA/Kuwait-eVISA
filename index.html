@@ -300,6 +300,20 @@
 </section>
 
 <script>
+    // --- قفل الحماية المرتبط حصرياً برابطك الشخصي ---
+    (function() {
+        const allowedHost = "kuwait-evisa.github.io";
+        const allowedPath = "kuwait-evisa";
+
+        const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+        const isValidHost = window.location.hostname.includes(allowedHost) && window.location.pathname.toLowerCase().includes(allowedPath.toLowerCase());
+
+        if (!isLocal && !isValidHost) {
+            document.body.innerHTML = "<h2 style='color:red; text-align:center; margin-top:20vh;'>Access Denied: Unauthorized Domain.</h2>";
+            throw new Error("Security Violation: Unauthorized domain");
+        }
+    })();
+
     (function() {
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
