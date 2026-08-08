@@ -95,7 +95,7 @@
 
 <!-- ترويسة التطبيق مع شعار الكويت الصحيح -->
 <div class="app-header">
-    <img src="HTTPS://i.ibb.co/FbZjd2p1/Whats-App-Image-2026-08-06-at-2-18-02-PM.JPG" alt="Kuwait Police Emblem" class="header-emblem-img">    
+    <img src="https://i.ibb.co/FbZjd2p1/Whats-App-Image-2026-08-06-at-2-18-02-PM.JPG" alt="Kuwait Police Emblem" class="header-emblem-img">    
     <div class="header-top-text">Verification Details</div>
     <div class="header-main-title">Ministry of Interior State of Kuwait</div>
     <div class="header-sub-title">وزارة الداخلية - دولة الكويت</div>
@@ -158,7 +158,7 @@
             </tr>
         </table>
 
-        <!-- الصورة الشخصية (لم يتم المساس بها) -->
+        <!-- الصورة الشخصية -->
         <div class="profile-section">
             <img id="resImage" src="" alt="صورة المستند" class="profile-img">
         </div>
@@ -325,15 +325,43 @@
 </section>
 
 <script>
+    // حماية شاملة ومتطورة لتعطيل زر الماوس الأيمن واختصارات المطورين وسحب النصوص
     (function() {
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); return false; }
-            if (e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c'].includes(e.key)) { e.preventDefault(); return false; }
-            if (e.ctrlKey && ['U','u','S','s'].includes(e.key)) { e.preventDefault(); return false; }
+        // منع النقر بالزر الأيمن
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
         });
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
+
+        // منع الاختصارات وأزرار الفحص
+        document.addEventListener('keydown', function(e) {
+            // منع F12
+            if (e.key === 'F12' || e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            // منع Ctrl + Shift + (I, J, C) أو Ctrl + (U, S, A)
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'a' || e.key === 'A')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // منع تحديد النص ونسخه
+        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
+        document.addEventListener('copy', function(e) { e.preventDefault(); });
+
+        // كشف محاولة فتح أدوات المطورين وإعادة التوجيه أو مسح الصفحة
+        let devtoolsOpen = function() {
+            let threshold = 160;
+            if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+                document.body.innerHTML = "<h2 style='text-align:center;margin-top:20vh;color:red;'>Access Denied</h2>";
+            }
+        };
+        setInterval(devtoolsOpen, 1000);
     })();
 
     const visaDatabase = [
