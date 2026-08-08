@@ -50,6 +50,19 @@
             .btn-search { padding: 12px 22px; font-weight: bold; color: #fff; background-color: #0055a5; border: none; border-radius: 6px; cursor: pointer; }
             .btn-search:hover { background-color: #003d7a; }
             
+            /* تنسيق رسالة الخطأ داخل الصفحة بلون أحمر */
+            .error-message {
+                display: none;
+                margin-top: 15px;
+                padding: 10px;
+                background-color: #fdf2f2;
+                border: 1px solid #f5c6cb;
+                border-radius: 6px;
+                text-align: center;
+            }
+            .error-en { font-size: 13px; font-weight: bold; color: #dc3545; display: block; margin-bottom: 2px; }
+            .error-ar { font-size: 13px; font-weight: bold; color: #dc3545; display: block; }
+            
             #resultSection { padding: 20px 15px 40px 15px; display: none; max-width: 450px; margin: 0 auto; }
             
             .result-container { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 25px rgba(0,0,0,0.15); }
@@ -98,6 +111,12 @@
         <div class="input-group">
             <input type="text" id="searchInput" class="form-control" placeholder="Visa No. or Passport No. / رقم التأشيرة أو الجواز...">
             <button type="button" id="searchBtn" class="btn-search">تحقق</button>
+        </div>
+        
+        <!-- رسالة الخطأ تظهر هنا باللون الأحمر -->
+        <div id="errorMsg" class="error-message">
+            <span class="error-en">Invalid information or invalid visa</span>
+            <span class="error-ar">المعلومات غير صحيحة أو أن التأشيرة غير صالحة</span>
         </div>
     </div>
 </section>
@@ -390,8 +409,10 @@
 
     document.getElementById('searchBtn').addEventListener('click', function() {
         let query = document.getElementById('searchInput').value.trim();
+        let errorDiv = document.getElementById('errorMsg');
+        
         if(!query) {
-            alert('الرجاء إدخال رقم التأشيرة أو رقم الجواز / Please enter visa or passport number!');
+            errorDiv.style.display = 'block';
             return;
         }
 
@@ -401,6 +422,7 @@
         );
 
         if(foundRecord) {
+            errorDiv.style.display = 'none';
             document.getElementById('resVisaNum').innerText = foundRecord.visaNum;
             document.getElementById('resPassport').innerText = foundRecord.passport;
             document.getElementById('resName').innerHTML = foundRecord.name;
@@ -421,12 +443,13 @@
             document.getElementById('searchSection').style.display = 'none';
             document.getElementById('resultSection').style.display = 'block';
         } else {
-            alert('Invalid information or invalid visa / المعلومات غير صحيحة أو أن التأشيرة غير صالحة');
+            errorDiv.style.display = 'block';
         }
     });
 
     document.getElementById('backBtn').addEventListener('click', function() {
         document.getElementById('searchInput').value = '';
+        document.getElementById('errorMsg').style.display = 'none';
         document.getElementById('resultSection').style.display = 'none';
         document.getElementById('searchSection').style.display = 'flex';
     });
