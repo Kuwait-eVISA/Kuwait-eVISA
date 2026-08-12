@@ -248,7 +248,7 @@
                 <td>
                     <div class="field-box">
                         <span class="field-en">Gender</span>
-                        <span class="field-ar">Male / ذكر</span>
+                        <span class="field-ar" id="resGender">-</span>
                     </div>
                 </td>
             </tr>
@@ -369,6 +369,7 @@
             "visaNum": "281484601",
             "passport": "N04061534",
             "name": "مها علي زين<br> MAHA ALI ZIN",
+            "gender": "Female / أنثى",
             "period": "30 يوم / 30 Days",
             "multiple": "N (لا)",
             "passExpiry": "2026-08-04",
@@ -387,6 +388,7 @@
             "visaNum": "281484602",
             "passport": "N04061599",
             "name": "فاطمة علي غزالة<br> FATEMA ALI GHZALA",
+            "gender": "Female / أنثى",
             "period": "30 يوم / 30 Days",
             "multiple": "N (لا)",
             "passExpiry": "2026-08-04",
@@ -405,6 +407,7 @@
             "visaNum": "295123488",
             "passport": "N08912345",
             "name": "عمر خالد المحمود<br>OMAR KHALED ALMAHMOUD",
+            "gender": "Male / ذكر",
             "period": "90 يوم / 90 Days",
             "multiple": "Y (نعم)",
             "passExpiry": "2031-05-12",
@@ -423,6 +426,7 @@
             "visaNum": "295123666",
             "passport": "N014777999",
             "name": "كرم احمد المحمد<br>KARAM AHMAD ALMOHAMAD",
+            "gender": "Male / ذكر",
             "period": "90 يوم / 90 Days",
             "multiple": "Y (نعم)",
             "passExpiry": "2032-05-12",
@@ -441,6 +445,7 @@
             "visaNum": "273948122",
             "passport": "P78234910",
             "name": "فاطمة أحمد حسن<br>FATIMA AHMAD HASSAN",
+            "gender": "Female / أنثى",
             "period": "30 يوم / 30 Days",
             "multiple": "N (لا)",
             "passExpiry": "2029-11-20",
@@ -476,6 +481,7 @@
             document.getElementById('resVisaNum').innerText = foundRecord.visaNum;
             document.getElementById('resPassport').innerText = foundRecord.passport;
             document.getElementById('resName').innerHTML = foundRecord.name;
+            document.getElementById('resGender').innerText = foundRecord.gender;
             document.getElementById('resPeriod').innerText = foundRecord.period;
             document.getElementById('resMultiple').innerText = foundRecord.multiple;
             document.getElementById('resPassExpiry').innerText = foundRecord.passExpiry;
